@@ -231,9 +231,30 @@
     <Compile Include="Migrations\201902021847224_UpdateTableMemberShipTypeWithName.Designer.cs">
       <DependentUpon>201902021847224_UpdateTableMemberShipTypeWithName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902021900530_AddBirthDateColumnToCustomerTable.cs" />
+    <Compile Include="Migrations\201902021900530_AddBirthDateColumnToCustomerTable.Designer.cs">
+      <DependentUpon>201902021900530_AddBirthDateColumnToCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902021948165_AddMoreColumnsToMovieTable.cs" />
+    <Compile Include="Migrations\201902021948165_AddMoreColumnsToMovieTable.Designer.cs">
+      <DependentUpon>201902021948165_AddMoreColumnsToMovieTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902021958584_CreatingTableGenreAndForeignKeyInMovieTable.cs" />
+    <Compile Include="Migrations\201902021958584_CreatingTableGenreAndForeignKeyInMovieTable.Designer.cs">
+      <DependentUpon>201902021958584_CreatingTableGenreAndForeignKeyInMovieTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902022004136_FillGenreTableWithData.cs" />
+    <Compile Include="Migrations\201902022004136_FillGenreTableWithData.Designer.cs">
+      <DependentUpon>201902022004136_FillGenreTableWithData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902022013484_CreatingTableGenreAndForeignKeyInMovieTable1.cs" />
+    <Compile Include="Migrations\201902022013484_CreatingTableGenreAndForeignKeyInMovieTable1.Designer.cs">
+      <DependentUpon>201902022013484_CreatingTableGenreAndForeignKeyInMovieTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MemberShipType.cs" />
@@ -309,6 +330,7 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Movie\index.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +364,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902021847224_UpdateTableMemberShipTypeWithName.resx">
       <DependentUpon>201902021847224_UpdateTableMemberShipTypeWithName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021900530_AddBirthDateColumnToCustomerTable.resx">
+      <DependentUpon>201902021900530_AddBirthDateColumnToCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021948165_AddMoreColumnsToMovieTable.resx">
+      <DependentUpon>201902021948165_AddMoreColumnsToMovieTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902021958584_CreatingTableGenreAndForeignKeyInMovieTable.resx">
+      <DependentUpon>201902021958584_CreatingTableGenreAndForeignKeyInMovieTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902022004136_FillGenreTableWithData.resx">
+      <DependentUpon>201902022004136_FillGenreTableWithData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902022013484_CreatingTableGenreAndForeignKeyInMovieTable1.resx">
+      <DependentUpon>201902022013484_CreatingTableGenreAndForeignKeyInMovieTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

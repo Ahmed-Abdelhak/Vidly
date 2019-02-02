@@ -23,12 +23,12 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
 
-            return View(_context.Customers.Include(c=>c.MemberShipType).ToList());
+            return View(_context.Customers.Include(c => c.MemberShipType).ToList());
         }
 
         public ActionResult Details(int id)
         {
-            var emp = _context.Customers.Find(id);
+            var emp = _context.Customers.Include(c => c.MemberShipType).SingleOrDefault(c => c.Id == id);
             return View(emp);
         }
 

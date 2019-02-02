@@ -4,9 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details of employee</h2>
+<h2>@Model.Name</h2>
 
        
 
-<p>@Model.Name</p>
+     <ul>
+<li>MemberShip: @Model.MemberShipType.Name</li>   
 
+@if (Model.BirthDate != null)
+{
+    <li>BirthDate:@Model.BirthDate</li>
+
+}
+else
+{
+    
+}
+
+     </ul>

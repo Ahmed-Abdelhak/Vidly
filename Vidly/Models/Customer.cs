@@ -1,4 +1,6 @@
-﻿namespace Vidly.Models
+﻿using System;
+
+namespace Vidly.Models
 {
     public class Customer
     {
@@ -8,5 +10,7 @@
         public byte MemberShipTypeID { get; set; }  // The reason is that you may need to get the membership
                                                     // with foreign_ID,
                                                     // instead of an object of the membership
+
+        public DateTime? BirthDate { get; set; }
     }
 }
