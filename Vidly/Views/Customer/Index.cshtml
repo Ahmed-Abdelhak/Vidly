@@ -7,10 +7,12 @@
 
 <h2>Customer</h2>
 
-<table class="table-bordered">
+<table class="table table-bordered">
     <thead>
     <tr>
-        <td>Name</td> 
+        <th>Name</th> 
+        <th>MemberShip Duration</th> 
+        <th>MemberShip Type</th> 
         </tr>
     </thead>   
 
@@ -18,7 +20,9 @@
     @foreach (var customer in Model)
         {
             <tr>
-            <td>@Html.ActionLink(@customer.Name, "Details", new { id = @customer.Id })</td>
+                <td>@Html.ActionLink(@customer.Name, "Details", new { id = @customer.Id })</td>   
+                <td>@customer.MemberShipType.DurationInMonths</td>
+                <td>@customer.MemberShipType.Name</td>
             </tr>
 
         } 
