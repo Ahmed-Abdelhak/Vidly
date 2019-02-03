@@ -9,9 +9,12 @@
 @using (@Html.BeginForm("Add","Customer",FormMethod.Post))
 {
 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.HiddenFor(c=>c.Customer.Id)
-    </div>  
+        @Html.LabelFor(c=>c.Customer.Id)
+        @Html.TextBoxFor(c=>c.Customer.Id, new {@class = "form-control"}) 
+        @Html.ValidationMessageFor(c=>c.Customer.Id)
+    </div>
     <div class="form-group">
         @Html.LabelFor(c=>c.Customer.Name)
         @Html.TextBoxFor(c=>c.Customer.Name, new {@class = "form-control"}) 
@@ -35,6 +38,6 @@
     </div>                                                                             
 
 
-
+      <button type="submit" class="btn btn-primary">Add</button>
 
 }

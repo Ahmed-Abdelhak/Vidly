@@ -48,10 +48,16 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Customer customer)
+        public ActionResult Add(Customer customer)         //Model Binding   , the request will send a form data with customer data and MVC will bind it
         {
+            if (ModelState.IsValid)
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges(); // this is wrapped in a SQL transaction and save the data to the DB
+            }
 
-            return View();
+            return RedirectToAction("Index", "Customer");
+
         }
     }
 
