@@ -1,0 +1,12 @@
+﻿using System.Collections.Generic;
+using Vidly.Models;
+
+namespace Vidly.ViewModels
+{
+    public class AddCustomerViewModel
+    {
+
+        public IEnumerable<MemberShipType> MemberShipTypes { get; set; }
+        public Customer Customer { get; set; }
+    }
+}

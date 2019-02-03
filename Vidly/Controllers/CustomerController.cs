@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -32,6 +33,26 @@ namespace Vidly.Controllers
             return View(emp);
         }
 
+        public ActionResult Add()
+        {
+            // here i want to pass a customer NOT Customers !  so, i won't use the above _context.Customers.Include !
+            // also, the MemberShipType , so i won't be able to attach  them
+            // instead, i will use a ViewModel
+
+            var model = new AddCustomerViewModel
+            {
+                MemberShipTypes = _context.MemberShipTypes.ToList()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Add(Customer customer)
+        {
+
+            return View();
+        }
     }
 
 

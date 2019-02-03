@@ -20,6 +20,7 @@ namespace Vidly.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<MemberShipType> MemberShipTypes { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public ApplicationDbContext()

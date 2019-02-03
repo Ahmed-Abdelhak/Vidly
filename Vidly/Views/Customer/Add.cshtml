@@ -1,0 +1,40 @@
+﻿@model Vidly.ViewModels.AddCustomerViewModel
+@{
+    ViewBag.Title = "Add A Customer";
+}
+
+<h2>Add a Customer</h2>
+                                
+
+@using (@Html.BeginForm("Add","Customer",FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.HiddenFor(c=>c.Customer.Id)
+    </div>  
+    <div class="form-group">
+        @Html.LabelFor(c=>c.Customer.Name)
+        @Html.TextBoxFor(c=>c.Customer.Name, new {@class = "form-control"}) 
+        @Html.ValidationMessageFor(c=>c.Customer.Name)  
+    </div>                                 
+    <div class="form-group">
+        @Html.LabelFor(c=>c.Customer.BirthDate)
+        @Html.TextBoxFor(c=>c.Customer.BirthDate, new {@class = "form-control"}) 
+        @Html.ValidationMessageFor(c=>c.Customer.BirthDate)  
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c=>c.Customer.MemberShipTypeID)
+        @Html.DropDownListFor(c=>c.Customer.MemberShipTypeID,new SelectList(@Model.MemberShipTypes,"Id","Name"), "Select A MemberShip", new {@class = "form-control"} ) 
+        @Html.ValidationMessageFor(c=>c.Customer.MemberShipTypeID)  
+    </div>                                 
+
+    <div class="form-check">
+        <label>
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewsLetter) Subscribe To News Letter
+    </label>
+    </div>                                                                             
+
+
+
+
+}
