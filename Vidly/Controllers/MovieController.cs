@@ -7,7 +7,7 @@ namespace Vidly.Controllers
 {
     public class MovieController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public MovieController()
         {
@@ -15,7 +15,7 @@ namespace Vidly.Controllers
         }
 
 
-        protected override void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)  // just for best practices 
         {
             base.Dispose(disposing);
             _context.Dispose();
@@ -23,10 +23,10 @@ namespace Vidly.Controllers
 
 
         // GET: Movie
-        public ActionResult index()
+        public ActionResult Index()
         {
 
-            return View(_context.Movies.Include(m=>m.Genre).ToList());
+            return View(_context.Movies.Include(m=>m.Genre).ToList());      // Eager loading "Include Genres"
         }
 
 
