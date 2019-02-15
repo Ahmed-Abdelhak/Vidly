@@ -53,7 +53,16 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Add(Customer customer)         //Model Binding   , the request will send a form data with customer data and MVC will bind it
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                var model = new AddCustomerViewModel
+                {
+                    MemberShipTypes = _context.MemberShipTypes.ToList()      // initialize the membership types from the DB
+                };
+
+                return View(model);
+            }
+            else
             {
                 _context.Customers.Add(customer);
                 _context.SaveChanges(); // this is wrapped in a SQL transaction and save the data to the DB

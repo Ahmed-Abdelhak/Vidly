@@ -40,12 +40,12 @@ namespace Vidly.Controllers
         public ActionResult Add()
         {
 
-            var AddedMoviewModel = new AddMoviewViewModel
+            var addedMoviewModel = new AddMoviewViewModel
             {
                 Genre = _context.Genres.ToList()
             };
 
-            return View(AddedMoviewModel);
+            return View(addedMoviewModel);
         }
 
         [HttpPost]
@@ -53,8 +53,17 @@ namespace Vidly.Controllers
         {
             if (ModelState.IsValid)
             {
-                var AddedMovie = _context.Movies.Add(movie);
+                _context.Movies.Add(movie);
                 _context.SaveChanges();
+            }
+            else
+            {
+                var addedMoviewModel = new AddMoviewViewModel
+                {
+                    Genre = _context.Genres.ToList()
+                };
+
+                return View(addedMoviewModel);
             }
 
             return RedirectToAction("Index", "Movie");

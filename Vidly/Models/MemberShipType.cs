@@ -8,5 +8,7 @@
         public float DiscountRate { get; set; }    // from 1% to 100%
         public float SignUpFee { get; set; }
         public string Name { get; set; }
+
+        public static readonly byte Free = 1;
     }
 }

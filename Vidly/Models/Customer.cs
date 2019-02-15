@@ -18,7 +18,10 @@ namespace Vidly.Models
         public byte MemberShipTypeID { get; set; }  // The reason is that you may need to get the membership
                                                     // with foreign_ID,
                                                     // instead of an object of the membership
+
+
         [Display(Name = "Date Of Birth")]
+        [Min18YearsForMembership]
         public DateTime? BirthDate { get; set; }
 
 
