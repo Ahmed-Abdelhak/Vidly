@@ -41,7 +41,7 @@
         @Html.TextBoxFor(c => c.Movie.InStock, new { @class = "form-control" })
         @Html.ValidationMessageFor(c => c.Movie.InStock)
     </div>
-   
+     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Add</button>
 }
           

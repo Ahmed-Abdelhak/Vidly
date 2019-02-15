@@ -51,6 +51,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(Customer customer)         //Model Binding   , the request will send a form data with customer data and MVC will bind it
         {
             if (!ModelState.IsValid)
@@ -85,6 +86,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Customer customer)
         {
             // instead you can use AutoMapper

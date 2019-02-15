@@ -49,6 +49,7 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(Movie movie)
         {
             if (ModelState.IsValid)
