@@ -1,0 +1,46 @@
+﻿@model Vidly.ViewModels.AddMoviewViewModel
+
+@{
+    ViewBag.Title = "Add new Movie";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<h2>Add new Movie</h2>                    
+
+@using (@Html.BeginForm("Add", "Movie", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.TextBox("DateAdded", DateTime.Now, new { @readonly = "readonly" , @class = "form-control" })
+    </div>
+    @Html.LabelFor(c => c.Movie.Id)
+    @Html.TextBoxFor(c => c.Movie.Id, new { @class = "form-control" })
+    @Html.ValidationMessageFor(c => c.Movie.Id)
+  
+    
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.Name)
+        @Html.TextBoxFor(c => c.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Movie.Name)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.ReleaseDate)
+        @Html.TextBoxFor(c => c.Movie.ReleaseDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Movie.ReleaseDate)
+    </div>     
+    <div class="form-group">
+        @Html.LabelFor(c=>c.Movie.Fk_GenreId)
+        @Html.DropDownListFor(c=>c.Movie.Fk_GenreId,new SelectList(@Model.Genre,"Id","Name"), "Select A Genre", new {@class = "form-control"} ) 
+        @Html.ValidationMessageFor(c=>c.Movie.Fk_GenreId)  
+    </div>  
+
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.InStock)
+        @Html.TextBoxFor(c => c.Movie.InStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Movie.InStock)
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Add</button>
+}

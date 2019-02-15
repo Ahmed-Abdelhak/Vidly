@@ -6,7 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movies</h2>          
+<h2>Movies</h2>  
+
+@Html.ActionLink("+Add new Movie", "Add", "Movie", new { @class = "btn btn-success" })
+<br>   
 
 <table class="table table-bordered">
     <thead>
