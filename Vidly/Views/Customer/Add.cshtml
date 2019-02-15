@@ -8,6 +8,7 @@
 
 @using (@Html.BeginForm("Add","Customer",FormMethod.Post))
 {
+   
 
     <div class="form-group">
         @Html.LabelFor(c=>c.Customer.Id)
@@ -39,4 +40,10 @@
 
       <button type="submit" class="btn btn-primary">Add</button>
 
+}
+                 
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
