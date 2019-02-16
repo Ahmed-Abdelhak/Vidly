@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Vidly.Models;
 
 namespace Vidly.DTOs
 {
@@ -15,7 +14,7 @@ namespace Vidly.DTOs
         [Required]
         public byte MemberShipTypeID { get; set; }
 
-        [Min18YearsForMembership]
+        //[Min18YearsForMembership]    // if not commented it will give us an exception
         public DateTime? BirthDate { get; set; }
 
         [Required]

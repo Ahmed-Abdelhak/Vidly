@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -20,57 +20,59 @@ namespace Vidly.Controllers.API
         // Building CRUD APIs
 
         // GET  /api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer,CustomerDto>);
+            return Ok(_context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>));
         }
-
 
         //GET   /api/customers/1
 
-        public CustomerDto GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                NotFound();
 
-            return Mapper.Map<Customer,CustomerDto>(customer);
+            return Ok(Mapper.Map<Customer, CustomerDto>(customer));
         }
 
 
         // POST  request will be through the URL :  api/customers
         [HttpPost]
-        public CustomerDto AddCustomers(CustomerDto customerDto) // it will return the resource added which is customerDto
+        public IHttpActionResult AddCustomers(CustomerDto customerDto) // it will return the resource added which is customerDto
         {
             // first check the modal state , which is sent from the Request
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return BadRequest();
 
-            _context.Customers.Add(Mapper.Map<CustomerDto,Customer>(customerDto));      // saved in Memory, need to save in DB
+            var addedCustomer = Mapper.Map<CustomerDto, Customer>(customerDto);
+
+            _context.Customers.Add(addedCustomer);      // saved in Memory, need to save in DB
             _context.SaveChanges();
-          
-            return customerDto;
+
+            return Created(new Uri(Request.RequestUri + "/" + addedCustomer.Id), addedCustomer);
         }
 
         // PUT to fully update the object with full properties unlike PATCH  api/customers/1
         [HttpPut]
-        public CustomerDto UpdateCustomer(int id, CustomerDto customerDto) // object properties in request body
+        public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto) // object properties in request body
         {
             // CHeck the Model state which is sent from the Request
-            if (!ModelState.IsValid) throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (!ModelState.IsValid) return BadRequest();
             // first i need to catch that customerDto with id from DB 
             var customerDB = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customerDB == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                NotFound();
 
             // now we need to MAP  (you can use AutoMapper)
-            Mapper.Map<CustomerDto, Customer>(customerDto, customerDB);
-        
+            var updatedCustomer = Mapper.Map<CustomerDto, Customer>(customerDto, customerDB);
+
             _context.SaveChanges();
 
-            return customerDto;
+            return Created(new Uri(Request.RequestUri + "/" + updatedCustomer.Id), updatedCustomer);
+
         }
 
         //DELETE  request will be through   api/customers/1
