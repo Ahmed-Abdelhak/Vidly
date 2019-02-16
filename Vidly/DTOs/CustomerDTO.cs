@@ -11,6 +11,9 @@ namespace Vidly.DTOs
         [Required(ErrorMessage = "Name is required !")]
         public string Name { get; set; }
 
+
+        public MemberShipTypeDto MemberShipType { get; set; }
+
         [Required]
         public byte MemberShipTypeID { get; set; }
 
