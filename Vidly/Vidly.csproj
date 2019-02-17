@@ -295,6 +295,10 @@
     <Compile Include="Migrations\201902171632585_SeedUsers.Designer.cs">
       <DependentUpon>201902171632585_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902171819009_AddColumnAddressToRegisterUser.cs" />
+    <Compile Include="Migrations\201902171819009_AddColumnAddressToRegisterUser.Designer.cs">
+      <DependentUpon>201902171819009_AddColumnAddressToRegisterUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -446,6 +450,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902171632585_SeedUsers.resx">
       <DependentUpon>201902171632585_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902171819009_AddColumnAddressToRegisterUser.resx">
+      <DependentUpon>201902171819009_AddColumnAddressToRegisterUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
