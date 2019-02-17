@@ -26,17 +26,19 @@ namespace Vidly.Controllers
         // GET: Movie
         public ActionResult Index()
         {
-
-            return View(_context.Movies.Include(m => m.Genre).ToList()); // Eager loading "Include Genres"
+              if(User.IsInRole(RoleName.CanManageMovies))
+                return View( "Index", _context.Movies.Include(m => m.Genre).ToList());
+            return View("indexReadOnly", _context.Movies.Include(m => m.Genre).ToList()); // Eager loading "Include Genres"
         }
 
-
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Details(int id)
         {
             var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
             return View(movie);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Add()
         {
 
@@ -50,6 +52,7 @@ namespace Vidly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Add(Movie movie)
         {
             if (ModelState.IsValid)

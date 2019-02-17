@@ -1,4 +1,5 @@
-﻿    <div class="navbar navbar-inverse navbar-fixed-top">
+﻿@using Vidly.Models
+    <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -9,8 +10,12 @@
             @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+            <ul class="nav navbar-nav">      
+                @{
+                    if (User.IsInRole(RoleName.CanManageMovies)) { 
+                    <li>@Html.ActionLink("Customers", "Index", "Customer")</li>   }
+
+                }
                 <li>@Html.ActionLink("Movies", "Index", "Movie")</li>
             </ul>
             @Html.Partial("_LoginPartial")

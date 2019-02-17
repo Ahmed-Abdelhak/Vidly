@@ -6,6 +6,8 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
+    [Authorize(Roles = RoleName.CanManageMovies)]
+
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
