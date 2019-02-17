@@ -9,6 +9,7 @@ namespace Vidly
         public static void Register(HttpConfiguration config)
         {
 
+            // Convert JSON from Pascal case to camel case, because C# uses the first but JS uses camel
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
